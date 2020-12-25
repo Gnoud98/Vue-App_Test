@@ -12,6 +12,7 @@
 
 <script>
 import Header from "./components/header.vue";
+
 export default {
   name: "App",
   components: { Header },
@@ -43,6 +44,10 @@ export default {
           path: "/register",
           icon: "ion-ios-people",
         },
+        {
+          text:"Slider",
+          path:"slider",
+        }
       ],
     };
   },

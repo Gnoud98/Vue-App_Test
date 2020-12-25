@@ -25,7 +25,13 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('../views/reg-form.vue')
-  }
+  },
+  {
+    path: '/slider',
+    name: 'slider',
+    component: () => import('../views/SwiperSlider.vue')
+  },
+ 
 ]
 
 const router = createRouter({
