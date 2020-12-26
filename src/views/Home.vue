@@ -1,83 +1,112 @@
 <template>
-  <div class="home">
-    <span class="text-home">
-      {{ textHome }}
-    </span>
-    <span class="text-big-home">
-      {{ textBigHome }}
-    </span>
-    <span>
-      <button class="text-uppercase">
-        {{ btnShowMore }}
-      </button>
-    </span>
+  <swiper
+   class="parallax-slider"
+    parallax 
+    grabCursor 
+    :navigation="{
+        nextEl:'.nextArrow',
+        prevEl:'.preArrow'
+    }"
+  >
+  <div class="parallax-slider-navigation">
+      <div class="nav-indicator preArrow">
+        <font-awesome-icon :icon="['fas','chevron-left']" />
+      </div>
+
+       <div class="nav-indicator nextArrow">
+           <font-awesome-icon :icon="['fas','chevron-right']" />
+       </div>
   </div>
+ 
+    <swiper-slide 
+    v-for="image in images" 
+    :key="image.id" 
+    class="parallax-slider-img"
+    >
+      
+       <img :src="image.imageUrl" alt="">
+
+    </swiper-slide>
+    
+
+  </swiper>
 </template>
 
 <script>
+//Swiper core
+
+import SwiperCore,{Navigation,Parallax} from 'swiper'
+//Swipper vue
+import { Swiper, SwiperSlide } from "swiper/vue";
+//Swipper css
+import "swiper/swiper.scss";
+// Navigation
+import "swiper/components/navigation/navigation.scss";
+//fontAwesome
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+SwiperCore.use([Navigation,Parallax])
 export default {
   name: "Home",
   data() {
     return {
-      textHome: " Welcome To My Page !",
-      textBigHome: "NICE TO MEET YOU",
-      btnShowMore: "Show More",
+      parallaxSwiperWidth: 0,
+      images: [
+        {
+          id: 1,
+          imageUrl: require("../assets/slider-banner1.png"),
+        },
+        {
+          id: 2,
+          imageUrl: require("../assets/slider-banner2.png"),
+        },
+        
+      ],
     };
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
+    FontAwesomeIcon,
+    
   },
 };
 </script>
+
 <style lang="scss" scoped>
-.home {
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  color: #fff;
-  background-image: url(../assets/header-bg.jpg);
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
-  position: relative;
-  .text-home {
-    width: 100%;
+body{
+    margin: 0;
+    padding: 0;
+}
+.parallax-slider{
+position: relative;
+}
+.parallax-slider-img{
+width:100%;
+height:100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+.parallax-slider-navigation{
     position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3rem;
-    font-style: italic;
-    line-height: 1.5rem;
-    margin-bottom: 25px;
-    font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  }
-  .text-big-home {
-    font-size: 4.5rem;
-    font-weight: 700;
-    width: 100%;
-    position: absolute;
-    top: 36%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  button {
-    padding: 15px;
-    background: #fed136;
-    color: #fff;
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%);
-    &:focus {
-      outline: none;
+    top: 50%;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    .nav-indicator{
+       height: 40px;
+       width: 40px;
+       background: cornflowerblue;
+       border-radius: 50%;
+       display: inline-flex;
+       justify-content: center;
+       align-items: center;
+      color: #ffffff;
     }
-    &:hover {
-      background: #f5c414;
-    }
-  }
+
 }
 </style>
