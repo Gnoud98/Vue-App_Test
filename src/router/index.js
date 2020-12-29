@@ -1,10 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+    {
+    path: '/homepage',
+    name: 'homepage',
+    component: () => import('../views/HomePage.vue')
+  },
+   
   {
-    path: '/home',
-    name: 'Home',
-   component: () => import('../views/Home.vue')
+    path: '/slider',
+    name: 'Slider',
+   component: () => import('../views/Slider.vue')
   },
   {
     path: '/about',
@@ -26,6 +32,7 @@ const routes = [
     name: 'register',
     component: () => import('../views/reg-form.vue')
   },
+  
  
 ]
 

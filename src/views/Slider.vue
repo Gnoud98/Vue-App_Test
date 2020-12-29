@@ -46,7 +46,9 @@ import "swiper/components/navigation/navigation.scss";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 SwiperCore.use([Navigation,Parallax])
 export default {
-  name: "Home",
+  watch: {
+  },
+  name: "slider",
   data() {
     return {
       parallaxSwiperWidth: 0,

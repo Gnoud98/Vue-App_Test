@@ -1,55 +1,34 @@
 <template>
   <div id="app">
-    <Header
-      :nav-links="navLinks"
-      background="#fff"
-      link-color="#35495e"
-      hoverBackground="#ddd"
-    />
+    <span @click="toggleModal()" class="login-btn"> Login </span>
+    <mainHeader />
+
     <router-view />
+    <div v-if="modalShow">
+      <modal @close="toggleModal" />
+    </div>
+  
+    
   </div>
 </template> 
 
 <script>
-import Header from "./components/header.vue";
-
+import mainHeader from "./components/MainHeader.vue";
+import modal from "./views/Modal";
 export default {
   name: "App",
-  components: { Header },
+  components: { mainHeader, modal },
   data() {
     return {
-      navLinks: [
-        {
-          text: "Home",
-          path: "/Home",
-          icon: "ion-ios-home",
-        },
-        {
-          text: "About",
-          path: "/about",
-          icon: "ion-ios-business",
-        },
-        {
-          text: "Todo",
-          path: "/todo",
-          icon: "ion-ios-bonfire",
-        },
-        {
-          text: "Login",
-          path: "/login",
-          icon: "ion-ios-people",
-        },
-         {
-          text: "Register",
-          path: "/register",
-          icon: "ion-ios-people",
-        },
-        {
-          text:"Slider",
-          path:"slider",
-        }
-      ],
+      modalShow: false,
+      navLinks: [],
+     
     };
+  },
+  methods: {
+    toggleModal() {
+      this.modalShow = !this.modalShow;
+    },
   },
 };
 </script>
@@ -68,7 +47,6 @@ body {
   text-align: center;
   color: #2c3e50;
   //background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-  padding-top: 30px;
 }
 #nav {
   padding: 30px;
@@ -79,5 +57,15 @@ body {
       color: #42b983;
     }
   }
+}
+.login-btn {
+  position: absolute;
+  z-index: 9;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #fff;
+  left: 66%;
+  top: 14px;
+  cursor: pointer;
 }
 </style>
