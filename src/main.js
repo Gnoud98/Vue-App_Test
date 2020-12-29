@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import 'animate.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { 
    faChevronLeft,

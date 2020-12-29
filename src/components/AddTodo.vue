@@ -1,6 +1,6 @@
 <template>
   <form @submit="addItem">
-    <input type="text" placeholder="Add new todo..." v-model="title" />
+    <input type="text" placeholder="Add new todo..." v-model="title"  class="border"/>
     <button type="submit" class="btn btn-primary add-btn">{{addTitle}}</button>
    
   </form>

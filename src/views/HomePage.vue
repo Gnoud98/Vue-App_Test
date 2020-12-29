@@ -14,41 +14,11 @@
               class="img-fluig"
             />
           </div>
-
           <div class="col-lg-6 my-auto pt-4 bg-light">
             <div class="text-center mb-3 d-none d-lg-block">
               <h1 class="display-3">{{ title }}</h1>
               <h3>Find the World</h3>
             </div>
-
-            <div class="border p-3 p-md-5 bg-white rounded shadow d-none">
-              <h2>Coming Soon</h2>
-              <form @submit.prevent="addEmail(email)">
-                <div class="form-group">
-                  <label for="emailSignup"
-                    >Reserve your account now, we'll contact you when it's
-                    live</label
-                  >
-                  <input
-                    v-model="email"
-                    type="email"
-                    id="emailSignup"
-                    placeholder="Enter Email"
-                    class="form-control"
-                  />
-                  <small id="emailHelp" class="form-text text-muted"
-                    >We'll never share your email address</small
-                  >
-                  <button type="submit" class="btn btn-success mt-3">
-                    Join Waiting List
-                  </button>
-                  <div class="mt-4">
-                    <p class="m-0">{{ message }}</p>
-                  </div>
-                </div>
-              </form>
-            </div>
-
             <div id="available" class="p-2">
               <h4 class="text-center mb-2 mt-3 text-dark">Available On</h4>
               <div class="row">

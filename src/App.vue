@@ -4,25 +4,31 @@
     <mainHeader />
 
     <router-view />
-    <div v-if="modalShow">
-      <modal @close="toggleModal" />
-    </div>
-  
-    
+    <transition name="zoomIn">
+      <div v-if="modalShow">
+        <modal @close="toggleModal" />
+      </div>
+    </transition>
+    <backtop>
+      <a class="backtop">
+        <img src="./assets/backtopp.png" alt="" />
+      </a>
+    </backtop>
   </div>
 </template> 
 
 <script>
 import mainHeader from "./components/MainHeader.vue";
 import modal from "./views/Modal";
+import backtop from "./components/BackTopTop";
+
 export default {
   name: "App",
-  components: { mainHeader, modal },
+  components: { mainHeader, modal, backtop },
   data() {
     return {
       modalShow: false,
       navLinks: [],
-     
     };
   },
   methods: {
@@ -67,5 +73,19 @@ body {
   left: 66%;
   top: 14px;
   cursor: pointer;
+}
+.btn {
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.55);
+  padding-top: 27px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+.backtop {
+  img {
+    width: 30px;
+    height: 30px;
+  }
 }
 </style>

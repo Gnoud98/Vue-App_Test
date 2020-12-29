@@ -1,5 +1,5 @@
 <template>
-  <div class="backdrop" @click="closeModal()">
+  <div class="backdrop" @click.self="closeModal()">
     <div class="modal-form">
       <div class="signup">
         <h1 class="signup-heading">{{title}}</h1> 
@@ -10,7 +10,7 @@
               type="email"
               class="form-input"
               id="name"
-              placeholder="Eg: Le Duong"
+            
             />
           </div>
           <div class="form-group">
